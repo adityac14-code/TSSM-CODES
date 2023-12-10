@@ -1,0 +1,72 @@
+def get_marks(n):
+    marks = []
+    for i in range(n):
+        while True:
+            try:
+                mark = float(input(f"Enter the marks for student {i + 1}: "))
+                if not 0 <= mark <= 100:
+                    raise ValueError
+                marks.append(mark)
+                break
+            except ValueError:
+                print("Invalid input! Marks should be between 0 and 100.")
+    return marks
+
+def calculate_average(marks):
+    sums = 0
+    if not marks:
+        return 0
+    else:
+        for i in marks:
+            sums = sums + i
+        return sums / len(marks)
+
+def find_highest_score(marks, n):
+    maximum = marks[0]
+    if not marks:
+        return None
+    else:
+        for i in range(1, n):
+            if marks[i] > maximum:
+                maximum = marks[i]
+
+    return maximum
+
+def find_lowest_score(marks, n):
+    minimum = marks[0]
+    if not marks:
+        return None
+    else:
+        for i in range(1, n):
+            if marks[i] < minimum:
+                minimum = marks[i]
+    return minimum
+
+def count_absent_students(marks):
+    n = int(input("Enter the total number of students in the class: "))
+    return n - len(marks)
+
+def find_freq(marks):
+    if not marks:
+        return None
+    else:
+        max_freq = 0  # Stores the maximum frequency of any mark
+        res = marks[0]  # Stores the mark with the highest frequency
+        for i in marks:
+            freq = marks.count(i)
+            if freq > max_freq:
+                max_freq = freq
+                res = i
+
+        # printing result
+        print("Mark(s) with the highest frequency:", res)
+        return res
+
+if _name_ == "_main_":
+    n = int(input("Enter the number of students: "))
+    marks = get_marks(n)
+    print("Average score of the class:", calculate_average(marks))
+    print("Highest score of the class:", find_highest_score(marks, n))
+    print("Lowest score of the class:", find_lowest_score(marks, n))
+    print("Count of students who were absent for the test:", count_absent_students(marks))
+    print("Mark(s) with the highest frequency:", find_freq(marks))

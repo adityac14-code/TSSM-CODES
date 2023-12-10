@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+</head>
+<body>
+  <!-- <h1>JEEVAN YEDYABHOKACHA</h1> -->
+  <pre>def add_data(pb):
+    name = input("Enter name: ")
+    number = int(input("Enter mobile number: "))
+    flag = False
+
+    for i in range(len(pb)):
+        if name < pb[i][0]:
+            pb.insert(i, (name, number))
+            flag = True
+            break
+
+    if not flag:
+        pb.append((name, number))
+
+    return pb
+
+def display(pb):
+    for entry in pb:
+        print(entry)
+
+def bin_search(pb):
+    name = input("Enter name to search: ")
+    length = len(pb)
+    l = 0
+    r = length - 1
+    flag = 0
+
+    while l <= r:
+        mid = (l + r) // 2
+
+        if name == pb[mid][0]:
+            print("Name =", name, "and mobile number is:", pb[mid][1])
+            flag = 1
+            break
+        elif name < pb[mid][0]:
+            r = mid - 1
+        else:
+            l = mid + 1
+
+    if flag == 0:
+        print(name, "is not in the list. Adding the name.")
+        pb = add_data(pb)
+        display(pb)
+        print("Name is added in the list.")
+
+def rec_bin_search(pb, l, r, name):
+    if l > r:
+        print("Name is not in the list.")
+        pb = add_data(pb)
+        display(pb)
+        print("Name is added in the list.")
+    else:
+        mid = (l + r) // 2
+        if name == pb[mid][0]:
+            print("Name =", name, "and mobile number is:", pb[mid][1])
+        elif name < pb[mid][0]:
+            rec_bin_search(pb, l, mid - 1, name)
+        else:
+            rec_bin_search(pb, mid + 1, r, name)
+
+if __name__ == "__main__":
+    pb = []
+    print("1. Insert name and mobile number")
+    print("2. Display name and mobile number")
+    print("3. Search friend using iterative binary search")
+    print("4. Search friend using recursive binary search")
+
+    while True:
+        print("Enter choice:")
+        ch = int(input())
+
+        if ch == 1:
+            pb = add_data(pb)
+        elif ch == 2:
+            display(pb)
+        elif ch == 3:
+            bin_search(pb)
+        elif ch == 4:
+            name = input("Enter name to search: ")
+            rec_bin_search(pb, 0, len(pb) - 1, name)
+        else:
+            print("Wrong choice...")
+            break
+
+
+</pre>
+</body>
+</html>

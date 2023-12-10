@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+</head>
+<body>
+  <!-- <h1>JEEVAN YEDYABHOKACHA</h1> -->
+  <pre>def add_Elements(arr,n):
+    
+    
+    flag=False
+    print("Enter Array Elements :")
+    for i in range(0,n):
+        num=int(input())
+        arr.append(num)
+    print("Array Elements are:")
+    print(arr)
+    return arr
+
+
+def bubble_sort(arr,n):
+    for i in range(0,n):
+        for j in range(0,n-1):
+            if(arr[j]>arr[j+1]):
+                temp=arr[j]
+                arr[j]=arr[j+1]
+                arr[j+1]=temp
+    print("sorted elements using bubble sort....")
+    print(arr)
+    
+def selection_sort(arr,n):
+    for i in range(0,n-1):
+        for j in range(i+1,n):
+            if(arr[i]>arr[j]):
+                temp=arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp
+    print("sorted elements using selection sort....")
+    print(arr)
+    
+    
+
+
+        
+        
+
+if __name__=="__main__":
+    arr=[]
+    n=0
+    
+    print("1.Insert array elements....")
+    print("2.display array elements....")
+    print("3.Bubble sort...")
+    print("3.Selection sort...")
+    while(True):
+        print("enter choice:")
+        ch=int(input())
+        
+        if ch==1:
+            n=int(input("how many number do you want to add..."))
+            arr=add_Elements(arr,n)
+        elif ch==2:
+            bubble_sort(arr,n)
+        elif ch==3:
+            selection_sort(arr,n)
+        else:
+             print("wrong choice...")
+             break
+
+
+def add_data(club_members):
+  roll = int(input("Enter roll number: "))
+  name = input("Enter name: ")
+
+  # Find insertion position
+  for i in range(len(club_members)):
+    if roll < club_members[i][0]:
+      # Insert at the found position
+      club_members.insert(i, (roll, name))
+      return club_members
+
+  # Append to the end if no position found
+  club_members.append((roll, name))
+  return club_members
+
+def display(club_members):
+  for member in club_members:
+    print(member)
+
+def ternary_search(club_members):
+  roll_no = int(input("Enter roll number to search: "))
+
+  # Set search boundaries
+  l = 0
+  r = len(club_members) - 1
+
+  while l <= r:
+    # Calculate mid1 and mid2
+    mid1 = l + (r - l) // 3
+    mid2 = r - (r - l) // 3
+
+    # Check for roll number at mid1 or mid2
+    if roll_no == club_members[mid1][0]:
+      print(f"Roll number {roll_no} belongs to {club_members[mid1][1]}")
+      return
+    elif roll_no == club_members[mid2][0]:
+      print(f"Roll number {roll_no} belongs to {club_members[mid2][1]}")
+      return
+
+    # Update search range based on comparison
+    if roll_no < club_members[mid1][0]:
+      r = mid1 - 1
+    elif roll_no > club_members[mid2][0]:
+      l = mid2 + 1
+    else:
+      l = mid1 + 1
+      r = mid2 - 1
+
+  # Roll number not found
+  print(f"Roll number {roll_no} not found. Add the name:")
+  add_data(club_members)
+  display(club_members)
+
+if __name__ == "__main__":
+  club_members = []
+
+  while True:
+    print("1. Insert roll number and name")
+    print("2. Display roll numbers and names")
+    print("3. Search for a name")
+    print("4. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+      club_members = add_data(club_members)
+    elif choice == 2:
+      display(club_members)
+    elif choice == 3:
+      ternary_search(club_members)
+    elif choice == 4:
+      break
+    else:
+      print("Invalid choice. Please try again.")
+
+
+def add_Elements(arr, n):
+  """
+  Adds elements to the array.
+
+  Args:
+    arr: The array to store the elements.
+    n: The number of elements to add.
+
+  Returns:
+    The updated array with the added elements.
+  """
+
+  try:
+    print("Enter Array Elements:")
+    for _ in range(n):
+      num = float(input())
+      arr.append(num)
+  except ValueError:
+    print("Invalid input! Please enter valid numbers.")
+
+  print(f"Array Elements: {arr}")
+  return arr
+
+
+def bubble_sort(arr, n):
+  """
+  Sorts the array using bubble sort.
+
+  Args:
+    arr: The array to sort.
+    n: The number of elements in the array.
+
+  Returns:
+    None
+  """
+
+  for i in range(n):
+    swapped = False
+    for j in range(n - 1):
+      if arr[j] > arr[j + 1]:
+        arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        swapped = True
+
+    if not swapped:
+      break
+
+  print("Sorted elements using bubble sort:")
+  print(arr)
+
+  print("Top 5 scores:", arr[-5:])
+
+
+def selection_sort(arr, n):
+  """
+  Sorts the array using selection sort.
+
+  Args:
+    arr: The array to sort.
+    n: The number of elements in the array.
+
+  Returns:
+    None
+  """
+
+  for i in range(n - 1):
+    min_index = i
+    for j in range(i + 1, n):
+      if arr[j] < arr[min_index]:
+        min_index = j
+
+    arr[i], arr[min_index] = arr[min_index], arr[i]
+
+  print("Sorted elements using selection sort:")
+  print(arr)
+
+  print("Top 5 scores:", arr[-5:])
+
+
+if __name__ == "__main__":
+  arr = []
+  n = 0
+
+  print("1. Insert array elements")
+  print("2. Display array elements")
+  print("3. Bubble sort")
+  print("4. Selection sort")
+  print("5. Exit")
+
+  while True:
+    try:
+      ch = int(input("Enter your choice: "))
+    except ValueError:
+      print("Invalid input! Please enter a valid number.")
+      continue
+
+    if ch == 1:
+      n = int(input("How many numbers do you want to add? "))
+      arr = add_Elements(arr, n)
+    elif ch == 2:
+      print(arr)
+    elif ch == 3:
+      bubble_sort(arr, n)
+    elif ch == 4:
+      selection_sort(arr, n)
+    elif ch == 5:
+      break
+    else:
+      print("Invalid choice. Please try again.")
+
+
+
+</pre>
+</body>
+</html>

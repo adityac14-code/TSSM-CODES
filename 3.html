@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+</head>
+<body>
+  <!-- <h1>JEEVAN YEDYABHOKACHA</h1> -->
+  <pre>def long_word():
+    str1 = input("Enter String: ")
+    words = str1.split()
+    long_word = []
+    length = 0
+    for i in words:
+        len_word = len(i)
+        if len_word >= length:
+            length = len_word
+            long_word.append(i)
+
+    print("Longest word:")
+    for i in long_word:
+        print(i, end="\t")
+    print()
+
+def char_occur():
+    str1 = input("Enter string: ")
+    count = 0
+    ch = input("Enter char: ")
+    for i in str1:
+        if ch == i:
+            count += 1
+
+    print("Character occurrence:", count)
+
+def str_palindrome():
+    str1 = input("Enter string: ")
+    str2 = str1[::-1]
+    print("Reverse of string:", str2)
+    if str2 == str1:
+        print(str1, "is palindrome.")
+    else:
+        print(str1, "is not palindrome.")
+
+def substring_appearance():
+    str1 = input("Enter String: ")
+    words = str1.split()
+    count = 0
+    for i in words:
+        try:
+            print(i, "appears in string at index", count)
+            count += len(i)
+        except:
+            print("Exception caught...")
+
+def word_occur():
+    s = input("Enter string: ")
+    words = s.split()
+    u_words = []
+    word_counts = []
+
+    for word in words:
+        flag = False
+
+        for i in range(len(u_words)):
+
+            if word == u_words[i]:
+                word_counts[i] += 1
+                flag = True
+                break
+        if not flag:
+            u_words.append(word)
+            word_counts.append(1)
+
+    for i in range(len(u_words)):
+        print(u_words[i], ":", word_counts[i])
+
+if __name__ == "__main__":
+    print("1. Longest Word")
+    print("2. Display Occurrence of Particular Character")
+    print("3. String is Palindrome")
+    print("4. First Appearance of Substring")
+    print("5. Occurrence of Each Word in String")
+
+    while True:
+        print("Enter choice:")
+        ch = int(input())
+        if ch == 1:
+            long_word()
+        elif ch == 2:
+            char_occur()
+        elif ch == 3:
+            str_palindrome()
+        elif ch == 4:
+            substring_appearance()
+        elif ch == 5:
+            word_occur()
+        else:
+            print("Wrong choice...")
+            break
+
+
+</pre>
+</body>
+</html>
